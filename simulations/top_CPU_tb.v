@@ -24,19 +24,9 @@ module top_CPU_tb();
     reg clk;
     reg [3:0] inr;
     wire [15:0] outvalue;
-    wire [15:0] instr;
-    wire [9:0] pc_curr, pc_next;
-    wire [15:0] alu_result;
-    wire [1:0] SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5;
-    wire MovOp, RegW, MemW, MemR, enable;
-    wire [2:0] BrOp;
-    wire [3:0] ALUOp;
-    wire [15:0] ExOut;
-    wire [15:0] RO1, RO2, alu_b, WriteData, add1_r, add2_r, MovOut, readBus;
-    wire [3:0] R1, R2, RD;
     reg reset;
     
-   top_CPU TOP (clk, reset, inr, readBus, outvalue, instr, pc_curr, pc_next, alu_result, RegW, MemR, MemW, BrOp, ALUOp, MovOp, SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5, ExOut, RO1, RO2, alu_b, WriteData, add1_r, add2_r, R1, R2, RD, MovOut, enable);
+   top_CPU TOP (clk, reset, inr, outvalue);
     
     initial
     begin

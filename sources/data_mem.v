@@ -26,15 +26,20 @@ module data_mem(MemW, MemR, MemIn, WriteAddr, MemOut);
     output reg [15:0] MemOut;
     reg [15:0] data [999:0];
     
-//    initial
-//    begin
-//        data[0] = 2;
-//    end
+    integer i;
+    initial
+    begin
+       for (i=0;i<=999;i=i+1)
+            data[i] = 0; 
+    end
+    
     always @ (MemW or MemR or MemIn or WriteAddr)
     begin
         if(MemW)
-            data[WriteAddr] <= MemIn;
+            data[WriteAddr[9:0]] <= MemIn;
         if(MemR)
-            MemOut <= data[MemIn];
+            MemOut <= data[MemIn[9:0]];
+        else
+            MemOut <= 0;
     end
 endmodule

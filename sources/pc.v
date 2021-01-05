@@ -44,12 +44,9 @@ module pc(enable, reset, clk, in, out);
                 begin
                     out = 0;
                     first = 0;
-                    //temp = in;
                 end
                 else    
-                    //out = in;
                     out = temp;
-                    //temp = in;
                 end
         end
     end

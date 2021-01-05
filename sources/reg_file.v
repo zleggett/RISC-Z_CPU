@@ -34,27 +34,11 @@ module reg_file(enable, reset, clk, inr, R1, R2, RD, RegW, WriteData, RO1, RO2, 
     reg [15:0] temp;
     input clk, enable, reset;
     
-    //integer i;
+    integer i;
     initial
     begin
-        //for (i=0;i<=15;i=i+1)
-        //    regs[i] = 0;
-        regs[0] = 0;
-        regs[1] = 0;
-        regs[2] = 0;
-        regs[3] = 0;
-        regs[4] = 0;
-        regs[5] = 0;
-        regs[6] = 0;
-        regs[7] = 0;
-        regs[8] = 0;
-        regs[9] = 0;
-        regs[10] = 0;
-        regs[11] = 0;
-        regs[12] = 0;
-        regs[13] = 0;
-        regs[14] = 0;
-        regs[15] = 0;
+        for (i=0;i<=15;i=i+1)
+            regs[i] = 0;
     end
     
     always @ (reset)

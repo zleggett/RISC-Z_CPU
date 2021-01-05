@@ -19,25 +19,22 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module top_CPU(clk, reset, inr, readBus, outvalue, instr, pc_out, pc_in, result, RegW, MemR, MemW, BrOp, ALUOp, MovOp, SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5, ExOut, RO1, RO2, alu_b, WriteData, add1_r, add2_r, R1, R2, RD, MovOut, enable);
+module top_CPU(clk, reset, inr, outvalue);
     input clk;
     input [3:0] inr;
     input reset;
-    output [15:0] readBus;
-    output [15:0] outvalue, RO2, result;
-    output MemW, MemR;
+    output [15:0] outvalue;
     
-    output [15:0] pc_in, pc_out;
-    output [15:0] instr, ExOut, RO1, alu_b, WriteData, add1_r, add2_r, MovOut, R1, R2, RD;
-    output [1:0] SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5;
-    output MovOp, RegW, enable;
-    output [2:0] BrOp;
-    output [3:0] ALUOp;
+    wire [15:0] pc_in, pc_out, readBus, RO2, result;
+    wire [15:0] instr, ExOut, RO1, alu_b, WriteData, add1_r, add2_r, MovOut, R1, R2, RD;
+    wire [1:0] SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5;
+    wire MovOp, RegW, enable, MemW, MemR;
+    wire [2:0] BrOp;
+    wire [3:0] ALUOp;
     
     instr_mem INSTR (enable, pc_out[9:0], instr);
     data_mem DATA (MemW, MemR, result, RO2, readBus);
-    control_and_datapath CAD (clk, reset, inr, readBus, outvalue, instr, pc_out, pc_in, result, RegW, MemR, MemW, BrOp, ALUOp, MovOp, SignOp, MuxC0, MuxC1, MuxC2, MuxC3, MuxC4, MuxC5, ExOut, RO1, RO2, alu_b, WriteData, add1_r, add2_r, R1, R2, RD, MovOut, enable);
-
+    control_and_datapath CAD (clk, reset, inr, readBus, outvalue, instr, pc_out, result, RO2, MemW, MemR, enable);
 endmodule
 
 
